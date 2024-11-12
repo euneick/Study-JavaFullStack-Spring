@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="firstBean" class="com.spring.ex03.First" lazy-init="false" />			<!-- 프로젝트 실행 시 생성 -->
+	<bean id="secondBean" class="com.spring.ex03.Second" lazy-init="true" />		<!-- Bean 객체 사용 시 생성 -->
+	<bean id="thirdBean" class="com.spring.ex03.Third" lazy-init="default" />		<!-- 프로젝트 실행 시 생성 -->
+</beans>
