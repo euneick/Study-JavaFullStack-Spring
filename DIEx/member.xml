@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="memberService" class="com.spring.ex02.MemberService">
+		<!--
+			주입되는 데이터가 기본형이 아닌 참조형인 경우 ref 속성으로 설정
+			 * name="memberDAO"		- setMemberDAO 메소드 호출
+			 * ref="memberDAO" 		- memberDAO 이름의 bean 객체의 주소값 전달
+		-->
+		<property name="memberDAO" ref="memberDAO" />
+	</bean>
+	<bean id="memberDAO" class="com.spring.ex02.MemberDAO"/>
+</beans>
