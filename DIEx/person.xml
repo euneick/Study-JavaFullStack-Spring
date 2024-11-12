@@ -3,9 +3,16 @@
 "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="personService" name="person" class="com.spring.ex01.PersonServiceImpl">
+	<!-- setter 메소드 활용 -->
+	<bean id="personService" class="com.spring.ex01.PersonServiceImpl">
 		<property name="name">
 			<value>이순신</value>
 		</property>
+	</bean>
+	
+	<!-- 생성자 메소드 활용 -->
+	<bean id="personService2" class="com.spring.ex01.PersonServiceImpl">
+		<constructor-arg value="주몽" />
+		<constructor-arg value="20" />
 	</bean>
 </beans>

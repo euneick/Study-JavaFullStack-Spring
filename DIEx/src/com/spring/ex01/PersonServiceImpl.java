@@ -5,6 +5,15 @@ public class PersonServiceImpl implements PersonService {
 	private String name;
 	private int age;
 
+	public PersonServiceImpl() {
+	}
+
+	public PersonServiceImpl(String name, int age) {
+
+		this.name = name;
+		this.age = age;
+	}
+
 	@Override
 	public void sayHello() {
 
