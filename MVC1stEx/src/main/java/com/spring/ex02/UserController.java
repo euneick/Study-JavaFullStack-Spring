@@ -36,4 +36,27 @@ public class UserController extends MultiActionController {
 		
 		return modelAndView;
 	}
+	
+	public String openRegistView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		return "regist";
+	}
+	
+	public ModelAndView openInfoView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// 응답 할 데이터들 바인딩
+		modelAndView.addObject("id", request.getParameter("id"));
+		modelAndView.addObject("pwd", request.getParameter("pwd"));
+		modelAndView.addObject("name", request.getParameter("name"));
+		modelAndView.addObject("email", request.getParameter("email"));
+		
+		// 요청 할 페이지 명 바인딩
+		modelAndView.setViewName("info");
+		
+		return modelAndView;
+	}
 }

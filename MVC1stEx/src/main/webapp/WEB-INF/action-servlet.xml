@@ -44,6 +44,8 @@
 			<props>
 				<prop key="/Ex2/login.do">openLoginView</prop>
 				<prop key="/Ex2/loginPro.do">processLogin</prop>
+				<prop key="/Ex2/regist.do">openRegistView</prop>
+				<prop key="/Ex2/info.do">openInfoView</prop>
 			</props>
 		</property>
 	</bean>
