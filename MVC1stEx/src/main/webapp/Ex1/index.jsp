@@ -10,7 +10,8 @@
 </head>
 
 <body>
-	
+	<h1>index.jsp파일</h1>
+	<p>Hello, world!</p>
 </body>
 
 </html>
