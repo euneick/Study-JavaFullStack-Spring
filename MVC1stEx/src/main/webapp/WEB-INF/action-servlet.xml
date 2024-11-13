@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+		
+<!--
+	web.xml 에 servlet-name 을 action 이라고 지정했으므로,
+	해당 파일의 이름은 action 으로 시작 해야 함
+	(해당 파일의 이름이 action1-servlet.xml 이면 톰캣이 해당 파일을 찾지 못하고 에러 발생) 
+-->
+	
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -10,20 +17,33 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-		
-	<!--
-		web.xml 에 servlet-name 을 action 이라고 지정했으므로,
-		해당 파일의 이름은 action 으로 시작 해야 함
-		(해당 파일의 이름이 action1-servlet.xml 이면 톰캣이 해당 파일을 찾지 못하고 에러 발생) 
-	-->
- 
-	<bean id="simpleUrlController" class="com.spring.ex01.SimpleUrlController" />
 	
 	<bean id="urlMappling" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<!-- setMappings(simpleUrlController) 구현 -->
+		<!-- setMappings() 구현 -->
 		<property name="mappings">
 			<props>
 				<prop key="/Ex1/index.do">simpleUrlController</prop>
+				<prop key="/Ex2/*.do">userController</prop>
+			</props>
+		</property>
+	</bean>
+ 
+	<bean id="simpleUrlController" class="com.spring.ex01.SimpleUrlController" />
+	<bean id="userController" class="com.spring.ex02.UserController">
+		<property name="methodNameResolver">	<!-- MultiActionController 클래스 내 구현되어 있는 변수의 setter -->
+			<ref local="userMethodNameResolver" />
+		</property>
+	</bean>
+	
+	<!--
+		 PropertiesMethodNameResolver
+		  - 컨트롤러 내에 작성 된 특정 메소드를 호출하여 사용 할 수 있게 하는 클래스
+	-->
+	<bean id="userMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/Ex2/login.do">openLoginView</prop>
+				<prop key="/Ex2/loginPro.do">processLogin</prop>
 			</props>
 		</property>
 	</bean>
@@ -39,7 +59,8 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		
 		<!-- View 경로 -->
-		<property name="prefix" value="/Ex1/" />
+		<!-- <property name="prefix" value="/Ex1/" /> -->
+		<property name="prefix" value="/Ex2/" />
 		
 		<!-- View 확장자 -->
 		<property name="suffix" value=".jsp" />
