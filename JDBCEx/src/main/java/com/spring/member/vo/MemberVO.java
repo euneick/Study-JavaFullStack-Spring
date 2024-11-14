@@ -9,6 +9,9 @@ public class MemberVO {
 	private String name;
 	private String email;
 	private Date joinDate;
+	
+	public MemberVO() {
+	}
 
 	public MemberVO(String id, String pass, String name, String email) {
 
