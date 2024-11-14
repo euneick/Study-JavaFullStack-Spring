@@ -41,7 +41,9 @@
 				<prop key="/members/list.do">openMemberListView</prop>
 				<prop key="/members/regist.do">openMemberRegistView</prop>
 				<prop key="/members/registPro.do">processMemberRegist</prop>
-				<prop key="/members/info.do">openMemberInfoView</prop>
+				<prop key="/members/update.do">openMemberUpdateView</prop>
+				<prop key="/members/updatePro.do">processMemberUpdate</prop>
+				<prop key="/members/deletePro.do">processMemberDelete</prop>
 			</props>
 		</property>
 	</bean>
