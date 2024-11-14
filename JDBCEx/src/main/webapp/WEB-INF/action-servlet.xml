@@ -32,6 +32,7 @@
 		<property name="methodNameResolver">
 			<ref local="memberMethodResolver" />
 		</property>
+		<property name="memberService" ref="memberService" />
 	</bean>
 	
 	<bean id="memberMethodResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
