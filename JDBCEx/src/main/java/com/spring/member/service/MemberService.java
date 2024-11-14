@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 import org.springframework.dao.DataAccessException;
 
+import com.spring.member.dao.MemberDAO;
 import com.spring.member.vo.MemberVO;
 
 public class MemberService implements IMemberService {
+	
+	private MemberDAO memberDAO;
+	public void setMemberDAO(MemberDAO memberDAO) { this.memberDAO = memberDAO; }
 
 	@Override
 	public ArrayList<MemberVO> selectMembers() throws DataAccessException {
