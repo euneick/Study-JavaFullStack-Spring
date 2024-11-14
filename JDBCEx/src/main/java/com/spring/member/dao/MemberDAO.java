@@ -48,7 +48,7 @@ public class MemberDAO implements IMemberDAO {
 	@Override
 	public MemberVO selectMember(String id) throws DataAccessException {
 
-		String sql = "SELECT * FROM T_MEMBER WHERE id=?";
+		String sql = "SELECT * FROM t_member WHERE id=?";
 
 		MemberVO member = jdbcTemplate.queryForObject(sql, new RowMapper<MemberVO>() {
 
@@ -73,7 +73,7 @@ public class MemberDAO implements IMemberDAO {
 	@Override
 	public void insertMember(MemberVO member) throws DataAccessException {
 
-		String sql = "INSERT INTO T_MEMBER (ID, PWD, NAME, EMAIL)" + "VALUES(?,?,?,?)";
+		String sql = "INSERT INTO t_member (ID, PWD, NAME, EMAIL)" + "VALUES(?,?,?,?)";
 
 		jdbcTemplate.update(sql, member.getId(), member.getPass(), member.getName(), member.getEmail());
 	}
@@ -81,14 +81,14 @@ public class MemberDAO implements IMemberDAO {
 	@Override
 	public void updateMember(MemberVO member) throws DataAccessException {
 
-		this.jdbcTemplate.update("update t_member set pwd=?, name=?, email=? where id=?",
+		this.jdbcTemplate.update("UPDATE t_member SET pwd=?, name=?, email=? where id=?",
 				member.getPass(), member.getName(), member.getEmail(), member.getId());
 	}
 
 	@Override
 	public void deleteMember(String id) throws DataAccessException {
 
-		String sql = "DELETE FROM T_MEMBER WHERE id=?";
+		String sql = "DELETE FROM t_member WHERE id=?";
 
 		jdbcTemplate.update(sql, id);
 	}
