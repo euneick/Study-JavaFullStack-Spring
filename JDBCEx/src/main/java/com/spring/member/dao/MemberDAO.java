@@ -15,7 +15,7 @@ import com.spring.member.vo.MemberVO;
 public class MemberDAO implements IMemberDAO {
 
 	private JdbcTemplate jdbcTemplate;
-	public void setJdbcTemplate(DataSource dataSource) { jdbcTemplate = new JdbcTemplate(dataSource); }
+	public void setDataSource(DataSource dataSource) { jdbcTemplate = new JdbcTemplate(dataSource); }
 
 	@Override
 	public ArrayList<MemberVO> selectMembers() throws DataAccessException {
