@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		
+<!--
+	web.xml 에 servlet-name 을 action 이라고 지정했으므로,
+	해당 파일의 이름은 action 으로 시작 해야 함
+	(해당 파일의 이름이 action1-servlet.xml 이면 톰캣이 해당 파일을 찾지 못하고 에러 발생) 
+-->
+	
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="urlMappling" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<!-- setMappings() 구현 -->
+		<property name="mappings">
+			<props>
+				<prop key="/test/*.do">userController</prop>
+			</props>
+		</property>
+	</bean>
+ 
+	<bean id="userController" class="com.spring.ex01.UserController">
+		<property name="methodNameResolver">	<!-- MultiActionController 클래스 내 구현되어 있는 변수의 setter -->
+			<ref local="userMethodNameResolver" />
+		</property>
+	</bean>
+	
+	<!--
+		 PropertiesMethodNameResolver
+		  - 컨트롤러 내에 작성 된 특정 메소드를 호출하여 사용 할 수 있게 하는 클래스
+	-->
+	<bean id="userMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/test/login.do">login</prop>
+				<prop key="/test/result.do">result</prop>
+				<prop key="/test/regist.do">regist</prop>
+				<prop key="/test/info.do">info</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!--
+		ModelAndView 메모리에는 응답 할 VIEW 이름인 "index"만 저장되어 있음		
+		prefix(경로)에 저장된 값과 suffix(확장자)에 저장된 값을 연결하여
+		"/Ex1/index.jsp" 경로로 만든 후 DispatcherServlet으로 전달하여 페이지를 오픈
+	-->
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- View Class -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		
+		<!-- View 경로 -->
+		<property name="prefix" value="/test/" />
+		
+		<!-- View 확장자 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
