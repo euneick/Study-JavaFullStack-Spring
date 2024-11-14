@@ -1,5 +1,7 @@
 package com.spring.member.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.spring.member.service.MemberService;
+import com.spring.member.vo.MemberVO;
 
 public class MemberController extends MultiActionController implements IMemberController {
 
@@ -15,8 +18,16 @@ public class MemberController extends MultiActionController implements IMemberCo
 
 	@Override
 	public ModelAndView openMemberListView(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+		ArrayList<MemberVO> memberList = memberService.selectMembers();
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("memberList", memberList);
+		
+		modelAndView.setViewName("list");
+		
+		return modelAndView;
 	}
 
 	@Override

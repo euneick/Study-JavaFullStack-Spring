@@ -14,8 +14,8 @@ public class MemberService implements IMemberService {
 
 	@Override
 	public ArrayList<MemberVO> selectMembers() throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return memberDAO.selectMembers();
 	}
 
 	@Override
