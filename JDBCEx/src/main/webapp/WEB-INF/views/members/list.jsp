@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<table border="1" width="80%">
+	<table border="1" align="center" width="80%">
 		<tr align="center" bgcolor="lightgreen">
 			<th>아이디</th>
 			<th>비밀번호</th>
