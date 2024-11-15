@@ -39,13 +39,13 @@ public class MemberController extends MultiActionController implements IMemberCo
 	}
 
 	@Override
-	public ModelAndView processMemberRegist(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String processMemberRegist(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("utf-8");
 		
 		memberService.insertMember(request);
 		
-		return openMemberListView(request, response);
+		return "redirect:/Member/list.do";
 	}
 
 	@Override
@@ -66,23 +66,23 @@ public class MemberController extends MultiActionController implements IMemberCo
 	}
 
 	@Override
-	public ModelAndView processMemberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String processMemberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("utf-8");
 
 		memberService.updateMember(request);
 		
-		return openMemberListView(request, response);
+		return "redirect:/Member/list.do";
 	}
 
 	@Override
-	public ModelAndView processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("utf-8");
 
 		memberService.deleteMember(request);
 		
-		return openMemberListView(request, response);
+		return "redirect:/Member/list.do";
 	}
 
 }
