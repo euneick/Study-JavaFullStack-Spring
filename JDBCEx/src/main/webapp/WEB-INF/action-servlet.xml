@@ -15,7 +15,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/views/members/" />
+		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
@@ -28,7 +28,7 @@
 		</property>
 	</bean>
 
-	<bean id="memberController" class="com.spring.member.MemberController">
+	<bean id="memberController" class="com.spring.member.controller.MemberController">
 		<property name="methodNameResolver">
 			<ref local="memberMethodResolver" />
 		</property>
@@ -38,12 +38,12 @@
 	<bean id="memberMethodResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
 		<property name="mappings">
 			<props>
-				<prop key="/members/list.do">openMemberListView</prop>
-				<prop key="/members/regist.do">openMemberRegistView</prop>
-				<prop key="/members/registPro.do">processMemberRegist</prop>
-				<prop key="/members/update.do">openMemberUpdateView</prop>
-				<prop key="/members/updatePro.do">processMemberUpdate</prop>
-				<prop key="/members/deletePro.do">processMemberDelete</prop>
+				<prop key="/Member/list.do">openMemberListView</prop>
+				<prop key="/Member/regist.do">openMemberRegistView</prop>
+				<prop key="/Member/registPro.do">processMemberRegist</prop>
+				<prop key="/Member/update.do">openMemberUpdateView</prop>
+				<prop key="/Member/updatePro.do">processMemberUpdate</prop>
+				<prop key="/Member/deletePro.do">processMemberDelete</prop>
 			</props>
 		</property>
 	</bean>
