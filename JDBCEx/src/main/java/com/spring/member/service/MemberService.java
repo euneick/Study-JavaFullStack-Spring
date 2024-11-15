@@ -38,8 +38,8 @@ public class MemberService implements IMemberService {
 
 	@Override
 	public void deleteMember(String id) throws DataAccessException {
-		// TODO Auto-generated method stub
 		
+		memberDAO.deleteMember(id);
 	}
 
 }

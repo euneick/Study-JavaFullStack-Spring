@@ -12,5 +12,5 @@ public interface IMemberController {
 	public String processMemberRegist(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView openMemberUpdateView(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public String processMemberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public String processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

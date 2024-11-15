@@ -56,9 +56,11 @@ public class MemberController extends MultiActionController implements IMemberCo
 	}
 
 	@Override
-	public String processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ModelAndView processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		memberService.deleteMember(request.getParameter("id"));
+		
+		return openMemberListView(request, response);
 	}
 
 }
