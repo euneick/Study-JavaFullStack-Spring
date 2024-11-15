@@ -2,6 +2,8 @@ package com.spring.member.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.dao.DataAccessException;
 
 import com.spring.member.dao.MemberDAO;
@@ -19,27 +21,27 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
-	public MemberVO selectMember(String id) throws DataAccessException {
+	public MemberVO selectMember(HttpServletRequest request) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insertMember(MemberVO member) throws DataAccessException {
+	public void insertMember(HttpServletRequest request) throws DataAccessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateMember(MemberVO member) throws DataAccessException {
+	public void updateMember(HttpServletRequest request) throws DataAccessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteMember(String id) throws DataAccessException {
+	public void deleteMember(HttpServletRequest request) throws DataAccessException {
 		
-		memberDAO.deleteMember(id);
+		memberDAO.deleteMember(request.getParameter("id"));
 	}
 
 }
