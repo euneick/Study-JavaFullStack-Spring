@@ -32,14 +32,16 @@ public class MemberController extends MultiActionController implements IMemberCo
 
 	@Override
 	public String openMemberRegistView(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "member/regist";
 	}
 
 	@Override
-	public String processMemberRegist(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ModelAndView processMemberRegist(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		
+		
+		return openMemberListView(request, response);
 	}
 
 	@Override
@@ -58,7 +60,7 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public ModelAndView processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		memberService.deleteMember(request.getParameter("id"));
+		memberService.deleteMember(request);
 		
 		return openMemberListView(request, response);
 	}
