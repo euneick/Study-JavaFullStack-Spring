@@ -35,7 +35,7 @@
 				<td>${ member.email }</td>
 				<td>${ member.joinDate }</td>
 				<td><b><a href="${ contextPath }/Member/update.do?id=${ member.id }">수정</a></b></td>
-				<td><b><a href="${ contextPath }/Member/delete.do?id=${ member.id }">삭제</a></b></td>
+				<td><b><a href="${ contextPath }/Member/deletePro.do?id=${ member.id }">삭제</a></b></td>
 			</tr>
 		</c:forEach>
 	</table>	
