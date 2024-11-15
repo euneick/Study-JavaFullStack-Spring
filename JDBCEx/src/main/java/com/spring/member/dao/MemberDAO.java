@@ -73,7 +73,7 @@ public class MemberDAO implements IMemberDAO {
 	@Override
 	public void insertMember(MemberVO member) throws DataAccessException {
 
-		String sql = "INSERT INTO t_member (ID, PWD, NAME, EMAIL)" + "VALUES(?,?,?,?)";
+		String sql = "INSERT INTO t_member (id, pwd, name, email, joinDate)" + "VALUES(?,?,?,?,sysdate)";
 
 		jdbcTemplate.update(sql, member.getId(), member.getPass(), member.getName(), member.getEmail());
 	}

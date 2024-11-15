@@ -22,20 +22,32 @@ public class MemberService implements IMemberService {
 
 	@Override
 	public MemberVO selectMember(HttpServletRequest request) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return memberDAO.selectMember(request.getParameter("id"));
 	}
 
 	@Override
 	public void insertMember(HttpServletRequest request) throws DataAccessException {
-		// TODO Auto-generated method stub
 		
+		MemberVO member = new MemberVO(
+				request.getParameter("id"), 
+				request.getParameter("pass"), 
+				request.getParameter("name"), 
+				request.getParameter("email"));
+		
+		memberDAO.insertMember(member);
 	}
 
 	@Override
 	public void updateMember(HttpServletRequest request) throws DataAccessException {
-		// TODO Auto-generated method stub
+
+		MemberVO member = new MemberVO(
+				request.getParameter("id"), 
+				request.getParameter("pass"), 
+				request.getParameter("name"), 
+				request.getParameter("email"));
 		
+		memberDAO.updateMember(member);
 	}
 
 	@Override

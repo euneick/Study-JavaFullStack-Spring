@@ -39,7 +39,9 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public ModelAndView processMemberRegist(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		request.setCharacterEncoding("utf-8");
 		
+		memberService.insertMember(request);
 		
 		return openMemberListView(request, response);
 	}
@@ -47,14 +49,26 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public ModelAndView openMemberUpdateView(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+		request.setCharacterEncoding("utf-8");
+		
+		MemberVO member = memberService.selectMember(request);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("member", member);
+		
+		modelAndView.setViewName("members/update");
+		
+		return modelAndView;
 	}
 
 	@Override
-	public String processMemberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ModelAndView processMemberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		memberService.updateMember(request);
+		
+		return openMemberListView(request, response);
 	}
 
 	@Override
