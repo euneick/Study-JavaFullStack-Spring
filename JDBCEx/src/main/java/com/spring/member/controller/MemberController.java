@@ -25,7 +25,7 @@ public class MemberController extends MultiActionController implements IMemberCo
 		
 		modelAndView.addObject("memberList", memberList);
 		
-		modelAndView.setViewName("list");
+		modelAndView.setViewName("members/list");
 		
 		return modelAndView;
 	}
