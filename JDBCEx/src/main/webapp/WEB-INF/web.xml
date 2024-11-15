@@ -12,14 +12,29 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
-	<!--
-		JDBC 예제를 위한 jar 라이브러리
-		 * ojdbc6.jar
-		 * org.springframework.jdbc-3.0.6.RELEASE.jar
-		 * tomcat-dbcp-7.0.30.jar
-	-->
 
+<!--
+	JDBC 예제를 위한 jar 라이브러리
+	 * ojdbc6.jar
+	 * org.springframework.jdbc-3.0.6.RELEASE.jar
+	 * tomcat-dbcp-7.0.30.jar
+-->
+
+	<!-- 여러 xml 파일을 읽어 들이기 -->	
+	<!-- needed for ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/config/action-service.xml
+			/WEB-INF/config/action-dataSource.xml
+		</param-value>
+	</context-param>
+
+	<!-- Bootstraps the root web application context before servlet initialization -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
