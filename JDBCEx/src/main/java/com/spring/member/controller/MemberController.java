@@ -19,6 +19,8 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public ModelAndView openMemberListView(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		request.setCharacterEncoding("utf-8");
+
 		ArrayList<MemberVO> memberList = memberService.selectMembers();
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -66,6 +68,8 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public ModelAndView processMemberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		request.setCharacterEncoding("utf-8");
+
 		memberService.updateMember(request);
 		
 		return openMemberListView(request, response);
@@ -73,6 +77,8 @@ public class MemberController extends MultiActionController implements IMemberCo
 
 	@Override
 	public ModelAndView processMemberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		request.setCharacterEncoding("utf-8");
 
 		memberService.deleteMember(request);
 		
