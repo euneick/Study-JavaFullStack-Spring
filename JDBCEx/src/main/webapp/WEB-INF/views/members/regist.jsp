@@ -18,10 +18,10 @@
 
 <body>
 	<form action="${ contextPath }/Member/registPro.do" method="post">
-		<input type="text" name="id" placeholder="아이디를 입력해주세요" >
-		<input type="password" name="pass" placeholder="비밀번호를 입력해주세요" >
-		<input type="text" name="name" placeholder="이름을 입력해주세요" >
-		<input type="text" name="email" placeholder="이메일을 입력해주세요" >
+		<input type="text" name="id" placeholder="아이디를 입력해주세요" > <br>
+		<input type="password" name="pass" placeholder="비밀번호를 입력해주세요" > <br>
+		<input type="text" name="name" placeholder="이름을 입력해주세요" > <br>
+		<input type="text" name="email" placeholder="이메일을 입력해주세요" > <br>
 		<input type="submit" value="회원가입하기">
 		<input type="reset" value="다시 쓰기">
 	</form>

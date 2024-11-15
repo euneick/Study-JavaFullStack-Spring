@@ -33,7 +33,7 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public String openMemberRegistView(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return "member/regist";
+		return "members/regist";
 	}
 
 	@Override
