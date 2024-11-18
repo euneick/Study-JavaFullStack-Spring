@@ -5,7 +5,7 @@
   
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.ex01.MemberVO" alias="memberVO" />
+		<typeAlias type="com.jsp.ex01.MemberVO" alias="memberVO" />
 	</typeAliases>
 
 	<!-- 트랜젝션 처리 설정과 커넥션풀(DataSourse) 설정 -->
