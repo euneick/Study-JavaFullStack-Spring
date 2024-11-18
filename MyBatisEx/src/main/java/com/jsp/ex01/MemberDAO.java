@@ -32,6 +32,8 @@ public class MemberDAO {
 				Reader reader = Resources.getResourceAsReader(resource);
 
 				sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+				
+				reader.close();
 
 			}
 			catch (Exception e) {
@@ -50,5 +52,23 @@ public class MemberDAO {
 		List<MemberVO> memlist = session.selectList("mapper.member.selectAllMemberList");
 
 		return memlist;
+	}
+	
+	public String selectName() {
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		return session.selectOne("mapper.member.selectName");
+	}
+	
+	public int selectPwd() {
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		return session.selectOne("mapper.member.selectPwd");
 	}
 }

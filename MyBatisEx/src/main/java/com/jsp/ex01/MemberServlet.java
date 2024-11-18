@@ -1,6 +1,7 @@
 package com.jsp.ex01;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -29,14 +30,21 @@ public class MemberServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-
-		List<MemberVO> membersList = new MemberDAO().selectAllMemberList();
+		response.setContentType("text/html; charset=utf-8");
+		
+		MemberDAO memberDAO = new MemberDAO();
+		
+		String name = memberDAO.selectName();
+		int pwd = memberDAO.selectPwd();
+		
+		List<MemberVO> membersList = memberDAO.selectAllMemberList();
 
 		request.setAttribute("membersList", membersList);
+		request.setAttribute("name", name);
+		request.setAttribute("pwd", pwd);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("test01/listMembers.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 }

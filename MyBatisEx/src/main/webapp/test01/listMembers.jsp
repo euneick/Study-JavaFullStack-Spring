@@ -5,6 +5,8 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
+	String name = (String) request.getAttribute("name");
+	String pwd = String.valueOf((int) request.getAttribute("pwd"));
 %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -52,6 +54,11 @@
 	<a href="${contextPath}/member/memberForm.do">
 		<h1 style="text-align: center">회원가입</h1>
 	</a>
+	
+	<script>
+		alert('이름 : <%= name %>');
+		alert('비밀번호 : <%= pwd %>');
+	</script>
 </body>
 
 </html>
