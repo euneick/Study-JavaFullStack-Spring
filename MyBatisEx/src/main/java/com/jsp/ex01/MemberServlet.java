@@ -1,7 +1,6 @@
 package com.jsp.ex01;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -33,17 +32,44 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		MemberDAO memberDAO = new MemberDAO();
+		String nextPage = "";
 		
-		String name = memberDAO.selectName();
-		int pwd = memberDAO.selectPwd();
+		String action = request.getParameter("action");
 		
-		List<MemberVO> membersList = memberDAO.selectAllMemberList();
+		if (action == null || action.equals("listMembers")) {
+			
+			List<MemberVO> membersList = memberDAO.selectAllMemberList();
 
-		request.setAttribute("membersList", membersList);
-		request.setAttribute("name", name);
-		request.setAttribute("pwd", pwd);
+			request.setAttribute("membersList", membersList);
+			request.setAttribute("name", memberDAO.selectName());
+			request.setAttribute("pwd", memberDAO.selectPwd());
+			
+			nextPage = "test01/listMembers.jsp";
+		}
+		else if (action.equals("selectMemberById")) {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("test01/listMembers.jsp");
+			String id = request.getParameter("value");
+			
+			MemberVO member = new MemberVO();
+			member = memberDAO.selectMemberById(id);
+			
+			request.setAttribute("member", member);
+
+			nextPage = "test01/memberInfo.jsp";
+		}
+		else if (action.equals("selectMemberByPwd")) {
+			
+			int pwd = Integer.parseInt(request.getParameter("value"));
+			
+			List<MemberVO> membersList = memberDAO.selectMemberByPwd(pwd);
+
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "test01/listMembers.jsp";
+		}
+
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("test01/listMembers.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
 	}
 

@@ -71,4 +71,22 @@ public class MemberDAO {
 		
 		return session.selectOne("mapper.member.selectPwd");
 	}
+
+	public MemberVO selectMemberById(String id) {
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		return session.selectOne("mapper.member.selectMemberById", id);
+	}
+	
+	public List<MemberVO> selectMemberByPwd(int pwd) {
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		return session.selectList("mapper.member.selectMemberByPwd", pwd);
+	}
 }

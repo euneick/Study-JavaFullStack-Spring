@@ -23,5 +23,13 @@
 	<select id="selectPwd" resultType="int">
 		select pwd from t_member where id = 'joo'
 	</select>
+	
+	<select id="selectMemberById" resultType="memberVO" parameterType="String">
+		select * from t_member where id=#{id}
+	</select>
+	
+	<select id="selectMemberByPwd" resultMap="memResult" parameterType="int">
+		select * from t_member where pwd=#{pwd}
+	</select>
 </mapper>
   

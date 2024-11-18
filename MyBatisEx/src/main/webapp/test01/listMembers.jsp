@@ -6,7 +6,13 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String name = (String) request.getAttribute("name");
-	String pwd = String.valueOf((int) request.getAttribute("pwd"));
+	String pwd;
+	if (request.getAttribute("pwd") == null) {
+		pwd = null;
+	}
+	else { 
+		pwd = String.valueOf((int) request.getAttribute("pwd"));
+	}
 %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -56,8 +62,13 @@
 	</a>
 	
 	<script>
-		alert('이름 : <%= name %>');
-		alert('비밀번호 : <%= pwd %>');
+		let name = '<%= name %>';
+		let pwd = '<%= pwd %>';
+		
+		if (name != 'null' && pwd != 'null') {
+			alert('이름 : ' + name);
+			alert('비밀번호 : ' + pwd);			
+		}
 	</script>
 </body>
 
