@@ -3,6 +3,8 @@ package com.jsp.ex01;
 import java.io.Reader;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -88,5 +90,25 @@ public class MemberDAO {
 		SqlSession session = sqlMapper.openSession();
 		
 		return session.selectList("mapper.member.selectMemberByPwd", pwd);
+	}
+	
+	public int insertMember(HttpServletRequest request) {
+		
+		MemberVO memberVO = new MemberVO();
+		
+		memberVO.setId(request.getParameter("id"));
+		memberVO.setPwd(request.getParameter("pwd"));
+		memberVO.setName(request.getParameter("name"));
+		memberVO.setEmail(request.getParameter("email"));
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		int result = session.insert("mapper.member.insertMember", memberVO);
+		
+		session.commit();		// 값이 수정 됐으므로 수동 커밋
+		
+		return result;
 	}
 }

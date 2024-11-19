@@ -67,8 +67,17 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "test01/listMembers.jsp";
 		}
+		else if (action.equals("insertMember")) {
+			
+			memberDAO.insertMember(request);
+			
+			nextPage = "/mem.do?action=listMembers";
+		}
+		else if (action.equals("memberForm")) {
+			
+			nextPage = "test01/memberForm.jsp";
+		}
 
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("test01/listMembers.jsp");
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
 	}

@@ -57,7 +57,7 @@
 		</c:forEach>
 	</table>
 
-	<a href="${contextPath}/member/memberForm.do">
+	<a href="${contextPath}/mem.do?action=memberForm">
 		<h1 style="text-align: center">회원가입</h1>
 	</a>
 	
