@@ -1,6 +1,7 @@
 package com.jsp.ex01;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -94,7 +95,22 @@ public class MemberServlet extends HttpServlet {
 			nextPage = "/mem.do?action=listMembers";
 		}
 		else if (action.equals("deleteMember")) {
+
+			int result = memberDAO.deleteMember(request.getParameter("id"));
 			
+			response.setContentType("text/html; charset=utf-8");
+			
+			PrintWriter out = response.getWriter();
+			
+			out.write("<script>");
+			out.write("alert('" + (result == 1 ? "삭제 성공" : "삭제 실패") + "');");
+			if (result == 1) out.write("location.href = '" + request.getContextPath() + "/mem.do';");
+			else out.write("history.go(-1);");
+			out.write("</script>");
+			
+			out.close();
+
+			return;
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

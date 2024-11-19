@@ -152,4 +152,17 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+	public int deleteMember(String id) {
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		int result = session.delete("mapper.member.deleteMember", id);
+		
+		session.commit();		// 값이 수정 됐으므로 수동 커밋
+		
+		return result;		
+	}
 }

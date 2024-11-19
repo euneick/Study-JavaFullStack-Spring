@@ -46,5 +46,9 @@
 		update t_member set pwd=#{pwd}, name=#{name}, email=#{email} 
 		where id=#{id}
 	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from t_member where id=#{id}
+	</delete>
 </mapper>
   
