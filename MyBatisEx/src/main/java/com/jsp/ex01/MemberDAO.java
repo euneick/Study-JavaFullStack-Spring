@@ -165,4 +165,13 @@ public class MemberDAO {
 		
 		return result;		
 	}
+
+	public List<MemberVO> searchMember(MemberVO memberVO) {
+
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		return session.selectList("mapper.member.searchMember", memberVO);
+	}
 }

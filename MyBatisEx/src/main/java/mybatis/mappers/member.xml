@@ -50,5 +50,26 @@
 	<delete id="deleteMember" parameterType="String">
 		delete from t_member where id=#{id}
 	</delete>
+	
+<!--
+	<![CDATA[]]>
+		xml과 sql의 특수문자 같은 경우를 포함하여 문자 충돌을 방지하기 위한 태그
+-->
+	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
+		<![CDATA[
+			select * from t_member
+		]]>
+		
+		<where>
+			<if test="name != '' and name != null">
+				name=#{name}
+			</if>
+			
+			<if test="email != '' and email != null">
+				and email=#{email}
+			</if>
+		</where>
+		order by joinDate desc
+	</select>
 </mapper>
   

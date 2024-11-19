@@ -112,6 +112,19 @@ public class MemberServlet extends HttpServlet {
 
 			return;
 		}
+		else if (action.equals("searchMember")) {
+			
+			MemberVO memberVO = new MemberVO();
+			
+			memberVO.setName(request.getParameter("name"));
+			memberVO.setEmail(request.getParameter("email"));
+			
+			List<MemberVO> membersList = memberDAO.searchMember(memberVO);
+			
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "test01/listMembers.jsp";
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
