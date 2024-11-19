@@ -23,7 +23,8 @@
 </head>
 
 <body>
-	<form method="post" action="${contextPath}/mem.do?action=insertMember">
+	<%-- <form method="post" action="${contextPath}/mem.do?action=insertMember"> --%>
+	<form method="post" action="${contextPath}/mem.do?action=insertMember2">
 		<h1 class="text_center">회원 가입창</h1>
 		<table align="center">
 			<tr>

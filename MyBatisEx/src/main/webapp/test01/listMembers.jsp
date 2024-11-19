@@ -45,12 +45,12 @@
 				<td>${member.joinDate}</td>
 				<td>
 					<b>
-						<a href="${contextPath}/member/memberDetail.do?id=${member.id}">수정</a>
+						<a href="${contextPath}/mem.do?action=updateMember&id=${member.id}">수정</a>
 					</b>
 				</td>
 				<td>
 					<b>
-						<a href="${contextPath}/member/memberDel.do?id=${member.id}">삭제</a>
+						<a href="${contextPath}/mem.do?action=deleteMember&id=${member.id}">삭제</a>
 					</b>
 				</td>
 			</tr>

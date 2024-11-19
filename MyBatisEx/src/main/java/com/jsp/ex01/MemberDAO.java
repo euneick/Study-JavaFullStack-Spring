@@ -1,6 +1,7 @@
 package com.jsp.ex01;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -106,6 +107,46 @@ public class MemberDAO {
 		SqlSession session = sqlMapper.openSession();
 		
 		int result = session.insert("mapper.member.insertMember", memberVO);
+		
+		session.commit();		// 값이 수정 됐으므로 수동 커밋
+		
+		return result;
+	}
+	
+	public int insertMemberByHashMap(HttpServletRequest request) {
+
+		HashMap<String, String> memberMap = new HashMap<String, String>();
+		
+		memberMap.put("id", request.getParameter("id"));
+		memberMap.put("pwd", request.getParameter("pwd"));
+		memberMap.put("name", request.getParameter("name"));
+		memberMap.put("email", request.getParameter("email"));
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		int result = session.insert("mapper.member.insertMemberByHashMap", memberMap);
+		
+		session.commit();		// 값이 수정 됐으므로 수동 커밋
+		
+		return result;
+	}
+
+	public int updateMember(HttpServletRequest request) {
+
+		MemberVO memberVO = new MemberVO();
+		
+		memberVO.setId(request.getParameter("id"));
+		memberVO.setPwd(request.getParameter("pwd"));
+		memberVO.setName(request.getParameter("name"));
+		memberVO.setEmail(request.getParameter("email"));
+		
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		int result = session.update("mapper.member.updateMember", memberVO);
 		
 		session.commit();		// 값이 수정 됐으므로 수동 커밋
 		

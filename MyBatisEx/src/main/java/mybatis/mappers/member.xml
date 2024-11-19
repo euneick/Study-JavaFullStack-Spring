@@ -36,5 +36,15 @@
 		insert into t_member(id, pwd, name, email) 
 		values(#{id}, #{pwd}, #{name}, #{email})
 	</insert>
+	
+	<insert id="insertMemberByHashMap" parameterType="java.util.HashMap">
+		insert into t_member(id, pwd, name, email) 
+		values(#{id}, #{pwd}, #{name}, #{email})
+	</insert>
+	
+	<update id="updateMember" parameterType="memberVO">
+		update t_member set pwd=#{pwd}, name=#{name}, email=#{email} 
+		where id=#{id}
+	</update>
 </mapper>
   
