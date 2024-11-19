@@ -174,4 +174,13 @@ public class MemberDAO {
 		
 		return session.selectList("mapper.member.searchMember", memberVO);
 	}
+
+	public List<MemberVO> foreachSelect(List<String> nameList) {
+
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		return session.selectList("mapper.member.foreachSelect", nameList);
+	}
 }

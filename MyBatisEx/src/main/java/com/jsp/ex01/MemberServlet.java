@@ -2,6 +2,7 @@ package com.jsp.ex01;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -124,6 +125,20 @@ public class MemberServlet extends HttpServlet {
 			request.setAttribute("membersList", membersList);
 
 			nextPage = "test01/listMembers.jsp";
+		}
+		else if (action.equals("foreachSelect")) {
+			
+			List<String> nameList = new ArrayList<String>();
+			
+			nameList.add("주몽");			
+			nameList.add("온조");			
+			nameList.add("박혁거세");
+			
+			List<MemberVO> membersList = memberDAO.foreachSelect(nameList);
+			
+			request.setAttribute("membersList", membersList);
+			
+			nextPage = "test01/listMembers.jsp";	
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
