@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="urlMappling"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/Member/*.do">memberController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="memberController" class="com.spring.member.controller.MemberController">
+		<property name="methodNameResolver">
+			<ref local="memberMethodResolver" />
+		</property>
+		<property name="memberService" ref="memberService" />
+	</bean>
+	
+	<bean id="memberMethodResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/Member/list.do">openMemberListView</prop>
+				<prop key="/Member/regist.do">openMemberRegistView</prop>
+				<prop key="/Member/registPro.do">processMemberRegist</prop>
+				<prop key="/Member/update.do">openMemberUpdateView</prop>
+				<prop key="/Member/updatePro.do">processMemberUpdate</prop>
+				<prop key="/Member/deletePro.do">processMemberDelete</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
