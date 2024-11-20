@@ -34,6 +34,7 @@ public class MemberServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		MemberDAO memberDAO = new MemberDAO();
+		// MemberDAO2 memberDAO2 = new MemberDAO2(); // 실행 안됨, 인터페이스에 어노테이션을 작성하여 MyBatis를 사용 할 수 있다는 것만 알면 됨
 		String nextPage = "";
 		
 		String action = request.getParameter("action");
@@ -41,7 +42,8 @@ public class MemberServlet extends HttpServlet {
 		if (action == null || action.equals("listMembers")) {
 			
 			List<MemberVO> membersList = memberDAO.selectAllMemberList();
-
+			// List<MemberVO> membersList = memberDAO2.selectAllMemberList();
+			
 			request.setAttribute("membersList", membersList);
 			request.setAttribute("name", memberDAO.selectName());
 			request.setAttribute("pwd", memberDAO.selectPwd());

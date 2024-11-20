@@ -24,6 +24,6 @@
 	
 	<mappers>
 		<mapper resource="mybatis/mappers/member.xml" />
-		<mapper class="mybatis/mappers/IMemberMapper" />
+		<mapper class="test/IMemberMapper" />
 	</mappers>
 </configuration>

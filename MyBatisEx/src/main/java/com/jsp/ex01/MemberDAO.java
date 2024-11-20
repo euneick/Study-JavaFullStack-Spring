@@ -35,9 +35,6 @@ public class MemberDAO {
 				Reader reader = Resources.getResourceAsReader(resource);
 
 				sqlMapper = new SqlSessionFactoryBuilder().build(reader);
-				
-				reader.close();
-
 			}
 			catch (Exception e) {
 				e.printStackTrace();
