@@ -73,11 +73,16 @@
 		order by joinDate desc
 	</select>
 -->
-	
-	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
+
+	<!-- sql 구문 미리 준비 -->
+	<sql id="selectAll">
 		<![CDATA[
 			select * from t_member
-		]]>
+		]]>	
+	</sql>
+	
+	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
+		<include refid="selectAll" />	<!-- 준비 된 sql 구문 incldue -->
 		
 		<where>
 			<choose>
@@ -99,9 +104,7 @@
 	
 	<!-- collection 속성의 값이 리스트인 경우엔 list, 배열인 경우엔 array 설정 -->
 	<select id="foreachSelect" parameterType="java.util.List" resultMap="memResult">
-		<![CDATA[
-			select * from t_member
-		]]>
+		<include refid="selectAll" />
 		where name in
 		
 		<foreach collection="list" item="item" open="(" separator="," close=")">
