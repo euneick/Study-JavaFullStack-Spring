@@ -22,7 +22,7 @@
 	
 	<!-- MyBatis에서 제공하는 PooledDataSource 클래스를 사용하여 커넥션 풀 객체 생성 -->
 	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
-		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="driver" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
