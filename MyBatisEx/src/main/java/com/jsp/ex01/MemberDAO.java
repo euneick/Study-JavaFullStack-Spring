@@ -183,4 +183,17 @@ public class MemberDAO {
 		
 		return session.selectList("mapper.member.foreachSelect", nameList);
 	}
+
+	public int foreachInsert(List<MemberVO> newMemberList) {
+
+		sqlMapper = getInstance();
+		
+		SqlSession session = sqlMapper.openSession();
+		
+		int result = session.insert("mapper.member.foreachInsert", newMemberList);
+		
+		session.commit();
+		
+		return result; 
+	}
 }

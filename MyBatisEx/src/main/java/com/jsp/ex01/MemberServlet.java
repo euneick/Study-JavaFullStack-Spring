@@ -140,6 +140,19 @@ public class MemberServlet extends HttpServlet {
 			
 			nextPage = "test01/listMembers.jsp";	
 		}
+		else if (action.equals("foreachInsert")) {
+			
+			List<MemberVO> newMembersList = new ArrayList<MemberVO>();
+			
+			newMembersList.add(new MemberVO("teajo", "0001", "태조", "1st@joseon.go.kr"));
+			newMembersList.add(new MemberVO("jeongjong", "0002", "정종", "2nd@joseon.go.kr"));
+			newMembersList.add(new MemberVO("teajong", "0003", "태종", "3rd@joseon.go.kr"));
+			newMembersList.add(new MemberVO("sejong", "0004", "세종", "4th@joseon.go.kr"));
+			
+			memberDAO.foreachInsert(newMembersList);
+			
+			nextPage = "mem.do?action=listMembers";
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);

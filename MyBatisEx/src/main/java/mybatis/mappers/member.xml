@@ -108,5 +108,12 @@
 			#{item}
 		</foreach>
 	</select>
+	
+	<insert id="foreachInsert" parameterType="java.util.List">
+		<foreach collection="list" item="vo" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
+			INTO t_member(id, pwd, name, email) 
+			values(#{vo.id}, #{vo.pwd}, #{vo.name}, #{vo.email})
+		</foreach>
+	</insert>
 </mapper>
   
