@@ -19,7 +19,7 @@
 <body>
 	<form action="${ contextPath }/Member/updatePro.do" method="post">
 		<input type="text" name="id" value="${ member.id }" readonly> <br>
-		<input type="password" name="pass" value="${ member.pass }" placeholder="비밀번호를 입력해주세요" > <br>
+		<input type="password" name="pass" value="${ member.pwd }" placeholder="비밀번호를 입력해주세요" > <br>
 		<input type="text" name="name" value="${ member.name }" placeholder="이름을 입력해주세요" > <br>
 		<input type="text" name="email" value="${ member.email }" placeholder="이메일을 입력해주세요" > <br>
 		<input type="submit" value="수정하기">

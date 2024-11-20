@@ -28,7 +28,7 @@ public class MemberController extends MultiActionController implements IMemberCo
 		
 		modelAndView.addObject("memberList", memberList);
 		
-		modelAndView.setViewName("members/list");
+		modelAndView.setViewName("member/list");
 		
 		return modelAndView;
 	}
@@ -36,7 +36,7 @@ public class MemberController extends MultiActionController implements IMemberCo
 	@Override
 	public String openMemberRegistView(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return "members/regist";
+		return "member/regist";
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class MemberController extends MultiActionController implements IMemberCo
 		
 		modelAndView.addObject("member", member);
 		
-		modelAndView.setViewName("members/update");
+		modelAndView.setViewName("member/update");
 		
 		return modelAndView;
 	}

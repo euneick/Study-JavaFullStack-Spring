@@ -30,7 +30,7 @@
 		<c:forEach var="member" items="${ memberList }">
 			<tr align="center">
 				<td>${ member.id }</td>
-				<td>${ member.pass }</td>
+				<td>${ member.pwd }</td>
 				<td>${ member.name }</td>
 				<td>${ member.email }</td>
 				<td>${ member.joinDate }</td>
