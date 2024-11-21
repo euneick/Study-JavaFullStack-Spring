@@ -7,16 +7,16 @@
 	<update id="updateBalance1">
 		<![CDATA[
 			UPDATE cust_account 
-			SET balance=balance-500000
-			WHERE accountNo='70-490-930';
+			SET balance=balance-500000 
+			WHERE accountNo='70-490-930'
 		]]>
 	</update>
 	
 	<update id="updateBalance2">
 		<![CDATA[
 			UPDATE cust_account 
-			SET balance=balance+500000
-			WHERE accountNo='70-490-911';
+			SET balance=balance+500000 
+			WHERE accountNo='70-490-911'
 		]]>
 	</update>
 </mapper>
