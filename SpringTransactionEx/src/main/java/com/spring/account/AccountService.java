@@ -17,6 +17,10 @@ public class AccountService {
 	public void setAccountDAO(AccountDAO accountDAO) {
 		this.accountDAO = accountDAO;
 	}
-	
-	
+
+	public void sendMoney() {
+		
+		accountDAO.updateBalance1();
+		accountDAO.updateBalance2();		
+	}
 }
