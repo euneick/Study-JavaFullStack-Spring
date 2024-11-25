@@ -118,7 +118,47 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- 로컬에 설정한 ojdbc6.jar 의존 주입 -->
+		<!-- DataSource 관련 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>1.8.0</version>
+		</dependency>
+		
+		<!-- DataSource 관련 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
+
+		<!-- DataSource 관련 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/cglib/cglib-nodep -->
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib-nodep</artifactId>
+		    <version>2.2</version>
+		</dependency>
+		
+		<!-- MyBatis 관련 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>3.1.0</version>
+		</dependency>
+		
+		<!-- MyBatis 관련 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>1.1.0</version>
+		</dependency>
+		
+		<!-- 로컬에 생성한 ojdbc6.jar 의존 주입 -->
 		<dependency>
 			<groupId>jdbc.oracle</groupId>
 			<artifactId>OracleDriver</artifactId>
