@@ -22,9 +22,9 @@
 <body>
 	<h1>사이드 메뉴</h1>
 	<h1>
-		<a href="${ contextPath }/Member/list.do" class="no-underline">회원관리</a>
-		<a href="${ contextPath }/Board/list.do" class="no-underline">게시판관리</a>
-		<a href="#" class="no-underline">상품관리</a>
+		<a href="${ contextPath }/Member/list.do" class="no-underline">회원관리</a><br>
+		<a href="${ contextPath }/Board/list.do" class="no-underline">게시판관리</a><br>
+		<a href="#" class="no-underline">상품관리</a><br>
 	</h1>
 </body>
 
