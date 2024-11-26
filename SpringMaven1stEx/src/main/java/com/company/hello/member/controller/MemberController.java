@@ -108,4 +108,16 @@ public class MemberController implements IMemberController {
 		return "redirect:/Member/list.do";
 	}
 
+	@Override
+	@RequestMapping(value = "/Member/login.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView openMemberLoginView(HttpServletRequest request, HttpServletResponse response, String id)
+			throws Exception {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("member/login");
+		
+		return modelAndView;
+	}
+
 }

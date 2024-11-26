@@ -15,4 +15,5 @@ public interface IMemberController {
 	public ModelAndView openMemberUpdateView(HttpServletRequest request, HttpServletResponse response, String id) throws Exception;
 	public String processMemberUpdate(HttpServletRequest request, HttpServletResponse response, MemberVO member) throws Exception;
 	public String processMemberDelete(HttpServletRequest request, HttpServletResponse response, String id) throws Exception;
+	public ModelAndView openMemberLoginView(HttpServletRequest request, HttpServletResponse response, String id) throws Exception;
 }

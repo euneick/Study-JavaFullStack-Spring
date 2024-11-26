@@ -25,9 +25,15 @@
 				<h1><font size="30">스프링 메이븐 실습 홈페이지</font></h1>
 			</td>			
 			<td>
-				<h3>
-					<a href="#">로그인</a>
-				</h3>
+				<c:choose>
+					<c:when test="${ isLogin == true && member != null }">
+						<h3>환영합니다. ${ member.name }님!</h3>
+						<h3><a href="${ contextPath }/Member/logout.do">로그아웃</a></h3>
+					</c:when>
+					<c:otherwise>
+						<h3><a href="${ contextPath }/Member/login.do">로그인</a></h3>
+					</c:otherwise>
+				</c:choose>
 			</td>
 		</tr>
 	</table>
