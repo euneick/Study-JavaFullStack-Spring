@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-
-	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+	
+	<!-- 콘솔에 로그 메세지를 출력 -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender" >
+	
 		<param name="Target" value="System.out" />
+		
+		<!-- 로그 메세지의 출력 포맷 형식 지정 -->
 		<layout class="org.apache.log4j.PatternLayout">
+			<!--	
+				%p 		- 로그 레벨 이름 출력
+				%c 		- 전체 패키지 이름 또는 전체 파일 이름 출력
+				%m 		- 로그 메세지 출력
+				%n 		- 개행문자 
+			 -->
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
 	
-	<!-- Application Loggers -->
+	<!-- 설정한 기간 단위로 새 파일을 만들어 로그 메세지를 기록 -->
+	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+	
+		<param name="File" value="C:\\ProjectPlace\\JavaFullStack\\SpringLog\\output.log" />
+		
+		<!--
+			true 	- 새 로그 메세지를 기존 로그파일에 추가
+			false	- 매번 새로운 로그 파일이 생성
+		-->
+		<param name="Append" value="false" />
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="DatePattern" value="'.'yyyy-MM-dd" />
+			
+			<!--
+				%d 		- 메세지의 날짜 및 시간
+				%F:%L	- 로그 이벤트가 발생한 파일 명과 라인 번호
+			-->
+			<param name="ConversionPattern" value="[%d{HH:mm:ss}][%-5p](%F:%L) - %m%n" />
+		</layout>
+	
+	</appender>
+	
+	<!-- 해당 패키지에 존재하는 클래스들의 로그 레벨을 설정 -->
 	<logger name="com.company.hello">
 		<level value="info" />
 	</logger>
@@ -31,11 +63,17 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
-	<!-- Root Logger -->
+	
+	<!-- 애플리케이션의 전체 로그메세지를 콘솔 또는 파일에 출력하는 것을 설정 -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
+		<appender-ref ref="dailyFileAppender" />
 	</root>
+	
+	<!-- 
+		로그 레벨 우선 순위
+		FATAL > ERROR > WARN > INFO > DEBUG > TRACE
+	-->
 	
 </log4j:configuration>

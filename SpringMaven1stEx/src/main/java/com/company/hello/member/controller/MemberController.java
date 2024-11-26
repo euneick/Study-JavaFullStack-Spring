@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +20,8 @@ import com.company.hello.member.vo.MemberVO;
 
 @Controller("memberController")
 public class MemberController implements IMemberController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(MemberController.class);
 
 	// id가 memberService인 빈을 자동으로 주입
 	@Autowired
@@ -28,6 +32,9 @@ public class MemberController implements IMemberController {
 	public ModelAndView openMemberListView(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("utf-8");
+		
+		LOGGER.info("info 레벨 : viewName = member/list");
+		LOGGER.debug("debug 레벨 : viewName = member/list");
 
 		List<MemberVO> memberList = memberService.selectMembers();
 		
