@@ -23,6 +23,15 @@
 	
 	<context:component-scan base-package="com.company.fileio" />
 	
-	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 파일 최대 크기 설정 (현재 50MB) -->
+		<beans:property name="maxUploadSize" value="52428800" />
+		
+		<!-- 메모리에 저장할 최대 파일 크기 설정, 해당 크기를 초과하는 파일은 디스크에 임시로 저장-->
+		<beans:property name="maxInMemorySize" value="1000000" />
+		
+		<!-- 파일 및 텍스트 파일 인코딩 설정 -->
+		<beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
 	
 </beans:beans>
